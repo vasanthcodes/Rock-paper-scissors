@@ -21,36 +21,33 @@ function Playround(somthg, ComputerChoice) {
   console.log(somthg);
   if (lowerinput == "rock" || "paper" || "scissors") {
     if (lowerinput == "rock" && ComputerChoice == 1) {
-      alert(congrats);
+      console.log(congrats);
       humanscore += 1;
     } else if (lowerinput == "scissors" && ComputerChoice == 2) {
-      alert(congrats);
+      console.log(congrats);
       humanscore += 1;
     } else if (lowerinput == "paper" && ComputerChoice == 3) {
-      alert(congrats);
+      console.log(congrats);
       humanscore += 1;
     } else {
-      alert("Oosp, you lost!, Computer gets a point!!");
+      console.log("Oosp, you lost!, Computer gets a point!!");
       computerscore += 1;
     }
-  }
-  else{
-    alert("please enter a valid choice")
-    inputfromuser();
+  } else {
+    console.log("please enter a valid choice");
   }
 }
 
-for (let i = 1; i <= 5; i++) {
-  inputfromuser();
-  GetComputerChoice();
+for (let i = 1; i <= 1; i++) {
   Playround(inputfromuser(), GetComputerChoice());
   console.log("your Score=" + humanscore);
   console.log("computer Score=" + computerscore);
 }
+// display the winner
 if (humanscore > computerscore) {
+  alert(`"your score = ${humanscore}
+"computer score = ${computerscore}`);
   alert("YOU BEAT THE COMPUTER");
 } else {
   alert("COMPUTER WINS");
 }
-
-// display the winner
