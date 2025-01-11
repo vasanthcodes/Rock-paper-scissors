@@ -1,10 +1,12 @@
 console.log("hello world");
 
 //create a function which will get the computer choice
-function GetComputerChoice(max = 3) {
-  return Math.floor(Math.random() * max + 1);
+
+function GetComputerChoice(max = 2) {
+  let arra = ["rock", "paper", "scissors"];
+  let b = Math.floor(Math.random() * max);
+  return (arra = arra[b]);
 }
-console.log(GetComputerChoice());
 
 //take an input from the user
 function inputfromuser() {
@@ -13,32 +15,37 @@ function inputfromuser() {
 }
 let computerscore = 0;
 var humanscore = 0;
-let congrats = "congrats You win!!, You get a point";
 
 //check the input and the user value
 function Playround(somthg, ComputerChoice) {
+  console.log("computer chose " + ComputerChoice);
   let lowerinput = somthg.toLowerCase();
-  console.log(somthg);
+  console.log("You chose "+somthg);
+  let congrats = `congrats ${lowerinput} beats ${ComputerChoice}`;
   if (lowerinput == "rock" || "paper" || "scissors") {
-    if (lowerinput == "rock" && ComputerChoice == 1) {
+    if (
+      (lowerinput == "paper" && ComputerChoice == "rock") ||
+      (lowerinput == "rock" && ComputerChoice == "scissors") ||
+      (lowerinput == "scissors" && ComputerChoice == "paper")
+    ) {
       console.log(congrats);
       humanscore += 1;
-    } else if (lowerinput == "scissors" && ComputerChoice == 2) {
-      console.log(congrats);
-      humanscore += 1;
-    } else if (lowerinput == "paper" && ComputerChoice == 3) {
-      console.log(congrats);
-      humanscore += 1;
+    } else if (lowerinput == ComputerChoice) {
+      console.log("Its a draw");
     } else {
-      console.log("Oosp, you lost!, Computer gets a point!!");
-      computerscore += 1;
+      console.log(`computer wins,${ComputerChoice} beats ${lowerinput}`);
+      computerscore = computerscore + 1;
     }
   } else {
     console.log("please enter a valid choice");
+
+    console.log(
+      `You lose! ${GetComputerChoice()} beats ${lowerinput}`
+    );
   }
 }
 
-for (let i = 1; i <= 1; i++) {
+for (let i = 1; i <= 6; i++) {
   Playround(inputfromuser(), GetComputerChoice());
   console.log("your Score=" + humanscore);
   console.log("computer Score=" + computerscore);
@@ -48,6 +55,9 @@ if (humanscore > computerscore) {
   alert(`"your score = ${humanscore}
 "computer score = ${computerscore}`);
   alert("YOU BEAT THE COMPUTER");
-} else {
-  alert("COMPUTER WINS");
+} else if(humanscore==computerscore){
+  alert("Its a draw");
+}
+else{
+  console.log("COMPUTER WINS")
 }
