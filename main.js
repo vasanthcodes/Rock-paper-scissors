@@ -2,14 +2,14 @@ let computerscore = 0;
 var humanscore = 0;
 
 //create a function which will get the computer choice
-function GetComputerChoice(max = 2) {
+function getComputerChoice(max = 2) {
   let arra = ["rock", "paper", "scissors"];
   let b = Math.floor(Math.random() * max);
   return (arra = arra[b]);
 }
 
 //take an input from the user
-function inputfromuser() {
+function getInputfromuser() {
   let humanChoice = prompt("enter your choice");
   return humanChoice;
 }
@@ -37,13 +37,13 @@ function Playround(somthg, ComputerChoice) {
   } else {
     console.log("please enter a valid choice");
 
-    console.log(`You lose! ${GetComputerChoice()} beats ${lowerinput}`);
+    console.log(`You lose! ${getComputerChoice()} beats ${lowerinput}`);
   }
 }
 
 //loop to run the ge=ame multiple time
 for (let i = 1; i <= 6; i++) {
-  Playround(inputfromuser(), GetComputerChoice());
+  Playround(getInputfromuser(), getComputerChoice());
   console.log("your Score=" + humanscore);
   console.log("computer Score=" + computerscore);
 }
