@@ -2,22 +2,22 @@ let computerscore = 0;
 var humanscore = 0;
 
 //create a function which will get the computer choice
-function getComputerChoice(max = 2) {
+function getComputerChoice(max = 3) {
   let arra = ["rock", "paper", "scissors"];
   let b = Math.floor(Math.random() * max);
-  return (arra = arra[b]);
+  return (arra[b]);
 }
 
 // function for winner announcement
 function winnerAnnouncement() {
   if (humanscore > computerscore) {
-    console.log(`"your score = ${humanscore}
-    "computer score = ${computerscore}`);
-    console.log("YOU BEAT THE COMPUTER");
+    console.log(`U = ${humanscore}`)
+    // "computer score = ${computerscore}`);
+    // console.log("YOU BEAT THE COMPUTER");
   } else if (humanscore == computerscore) {
     console.log("Its a draw");
   } else {
-    console.log("COMPUTER WINS");
+    console.log(`C = ${computerscore}`);
   }
 }
 
@@ -30,13 +30,13 @@ function winnerAnnouncement() {
 //check the input and the user value
 function Playround(somthg, ComputerChoice) {
   let cc = ComputerChoice();
-  console.log("computer chose " + cc);
+  console.log(cc.toUpperCase());
   let lowerinput = somthg.toLowerCase();
-  console.log("You chose " + somthg);
+  console.log(somthg.toUpperCase());
   let congrats = `congrats ${lowerinput} beats ${cc}`;
-  if (lowerinput == "rock" || "paper" || "scissors") {
+  if (lowerinput === "rock" || lowerinput==="paper" || lowerinput==="scissors") {
     if (lowerinput == cc) {
-      console.log("Its a draw");
+      // console.log("Its a draw");
     } else if (
       (lowerinput == "paper" && cc == "rock") ||
       (lowerinput == "rock" && cc == "scissors") ||
@@ -45,8 +45,8 @@ function Playround(somthg, ComputerChoice) {
       console.log(congrats);
       humanscore += 1;
     } else {
-      console.log(`computer wins,${cc} beats ${lowerinput}`);
-      computerscore = computerscore + 1;
+      // console.log(`computer wins,${cc} beats ${lowerinput}`);
+      computerscore += 1;
     }
   } else {
     console.log("please enter a valid choice");
@@ -82,16 +82,17 @@ const sd=document.querySelector(".scoredisplay")
 
 buttons.forEach(button => {
   button.addEventListener("click", () => {
-    if (computerscore == 5 || humanscore == 5) {
+    if ((computerscore ==5) || (humanscore ==5) ){
       sd.textContent = `Your score is ${humanscore} and computer scored ${computerscore}`;
-      if(computerscore=5){
-        const d=document.querySelector(".winner").textContent="YOU WINS"
+      if(computerscore==5){
+        const d=document.querySelector(".winner").textContent="COMPUTER WINS"
       }
       else{
-        const d=document.querySelector(".winner").textContent="  COMPUTER WIN"
+        const d=document.querySelector(".winner").textContent="YOU WIN"
       }
     } else {
       Playround(button.textContent, getComputerChoice);
+      sd.textContent = `Your score is ${humanscore} and computer's score is ${computerscore}`;
     }
   });
 });
