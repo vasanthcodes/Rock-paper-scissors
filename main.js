@@ -64,15 +64,35 @@ function Playround(somthg, ComputerChoice) {
 // }
 
 //interactive part for the game
-const rock = document.querySelector("#rock");
-const paper = document.querySelector("#paper");
-const scissors = document.querySelector("#scissors");
+// const rock = document.querySelectorAll("button");
+// const paper = document.querySelector("#paper");
+// const scissors = document.querySelector("#scissors");
 
 // calling the fucntion with appropriate input from user
-rock.addEventListener("click", () => Playround("rock", getComputerChoice));
-paper.addEventListener("click", () => Playround("paper", getComputerChoice));
-scissors.addEventListener("click", () =>
-  Playround("scissors", getComputerChoice)
-);
+
+// paper.addEventListener("click", () => Playround("paper", getComputerChoice));
+// scissors.addEventListener("click", () =>
+//   Playround("scissors", getComputerChoice)
+// );
 
 //To display the results
+// rock.addEventListener("click", () => Playround("rock", getComputerChoice));
+const buttons = document.querySelectorAll("button");
+const sd=document.querySelector(".scoredisplay")
+
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    if (computerscore == 5 || humanscore == 5) {
+      sd.textContent = `Your score is ${humanscore} and computer scored ${computerscore}`;
+      if(computerscore=5){
+        const d=document.querySelector(".winner").textContent="YOU WINS"
+      }
+      else{
+        const d=document.querySelector(".winner").textContent="  COMPUTER WIN"
+      }
+    } else {
+      Playround(button.textContent, getComputerChoice);
+    }
+  });
+});
+
